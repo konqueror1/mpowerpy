@@ -1,5 +1,5 @@
 import os, json
-from mfi.mDevice import mDevice
+from repository.model.mDevice import mDevice
 import getpass
 import comm.webrequest
 

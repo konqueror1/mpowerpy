@@ -1,4 +1,4 @@
-from mfi.mRelay import mRelay
+from repository.model.mRelay import mRelay
 import comm.webrequest
 import comm.telnetclient
 import getpass
@@ -116,7 +116,3 @@ if __name__ == '__main__':
     print('After command: ' + d.change_relay_state(0, 1))    
     print(d.cnx.get_general_info())
     d.print_relay_states()
-
-
-    
-
