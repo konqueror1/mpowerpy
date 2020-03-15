@@ -23,15 +23,22 @@ def get_device(host):
     return results
 
 def add_device(payload):
-    device = mDevice('','','','')
-    device.__dict__ = json.loads(payload)
-
-    results = repo.add_device(device)
+    device = mDevice(payload['name'],payload['host'],payload['username'],payload['password'], False)
+    device.save_password = True
+    results = repo.save_device(device)
     
     if ('Error' in results):
         return json_results(True, results)
     
     return json_results(False, results)
+
+def delete_device(host):
+    result = repo.delete_device(host)
+
+    if ('Error' in result):
+        return json_results(True, result)
+    else:
+        return json_results(False, result)
 
 def json_results(is_error, values):
     if (is_error == False):

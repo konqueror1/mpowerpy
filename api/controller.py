@@ -18,6 +18,10 @@ def add_device():
    payload = request.json
    return view.add_device(payload)
 
+@api_app.route('/api/device/delete/<string:host>', methods=['DELETE'])
+def delete_device(host):
+   return view.delete_device(host)
+
 def run_api():
    api_app.run(debug=True, host='0.0.0.0')
 
