@@ -1,6 +1,6 @@
-import api.controller
+from api import controller
 import json
 
 if __name__ == '__main__':
-    api.controller.run_api()
+    controller.run_api()
     

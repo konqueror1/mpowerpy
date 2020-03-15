@@ -35,3 +35,23 @@ def get_all_devices():
             results.append(mp)
             
     return results
+
+def get_device(host):
+    matches = [dev for dev in config.devices if dev.host == host]
+
+    if (len(matches) == 0):
+        return None
+
+    return matches[0]
+
+def save_device(device):
+    matches = [dev for dev in config.devices if dev.host == device.host]
+
+    if (len(matches) > 0):
+        matches[0] = device        
+    else:
+        config.devices.append(device)
+        
+    config.save()
+
+    return 'Device with host \'{}\' saved'.format(device.host)
