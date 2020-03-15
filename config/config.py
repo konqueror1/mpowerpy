@@ -1,9 +1,9 @@
 import os, json
-from mfi.mDevice import mDevice
+from repository.model.mDevice import mDevice
 import getpass
 import comm.webrequest
 
-class Config:
+class Config(object):
     devices = []
     configFile = 'config/configuration.json'
 
@@ -33,6 +33,7 @@ class Config:
             
         return devDict
 
+
 _config = Config()
 
 def _load_config():    
@@ -55,7 +56,7 @@ def _device_manager():
     if 'l' in selection.lower():
         _list_devices()
     elif 'a' in selection.lower():
-        add_device()
+        _add_device()
     elif 'm' in selection.lower():
         index = _parse_index_no(selection)
 
@@ -67,7 +68,7 @@ def _device_manager():
         index = _parse_index_no(selection)
 
         if (index >= 0):
-            delete_device(index)
+            _delete_device(index)
         else:
             _device_manager()
 
@@ -108,7 +109,7 @@ def _list_devices():
     print()
     _device_manager()
 
-def add_device():
+def _add_device():
     _load_config()
     name = input('Enter a Friendly Name: ')
     host = input('Enter the Device\'s Host Name/IP Address: ')
@@ -171,7 +172,7 @@ def _modify_device(index):
     print('{0}\t-\t{1} saved successfully'.format(index, d.name))
     _device_manager()
 
-def delete_device(index):
+def _delete_device(index):
     _load_config()
     d = _config.devices[index]
 
