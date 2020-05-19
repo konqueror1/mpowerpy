@@ -11,6 +11,7 @@ class mRelay:
     powerfactor = 0.00
     relay = 0
     lock = 0
+    relay_number = 0
 
     def get_relay_state(self, client):
         command = 'cat /proc/power/relay' + str(self.relay_number)

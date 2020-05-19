@@ -1,6 +1,6 @@
-from repository.model.mRelay import mRelay
-import comm.webrequest
-import comm.telnetclient
+from mpower.repository.model.mRelay import mRelay
+import mpower.comm.webrequest
+import mpower.comm.telnetclient
 import getpass
 import json
 import time
@@ -19,7 +19,7 @@ class mDevice:
         self.host = host
         self.username = username
         self.password = password
-        self.cnx = comm.webrequest.Requester(host, username, password)
+        self.cnx = mpower.comm.webrequest.Requester(host, username, password)
         self.relays = []
 
         if (autoinitialize):
